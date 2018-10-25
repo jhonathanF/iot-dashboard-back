@@ -1,0 +1,18 @@
+{
+  "name": "dashboard-tiva",
+  "version": "1.0.0",
+  "description": "Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "test": "npm test"
+  },
+  "keywords": [
+    "tiva"
+  ],
+  "author": "Jhonathan",
+  "license": "ISC",
+  "dependencies": {
+    "serialport": "^7.0.2"
+  }
+}
