@@ -1,9 +1,13 @@
 const url = require('url');
 const getDistance = require('./src/controllers/distanceController');
+const getLightness = require('./src/controllers/lightnessController');
 const notFound = require('./src/controllers/notFoundController');
 const routes = {
     '/distance': {
         'GET': getDistance
+    },
+    '/lightness': {
+        'GET': getLightness
     }
 };
 
