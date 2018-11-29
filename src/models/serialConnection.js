@@ -9,7 +9,6 @@ async function initSerialConnection() {
     port = new SerialPort('COM3', {
         baudRate: 115200
     }, function (err) {
-        console.log('asaaa')
         if (err) {
             return console.log('Error: ', err.message);
         }
