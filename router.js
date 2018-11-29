@@ -1,6 +1,7 @@
 const url = require('url');
 const getDistance = require('./src/controllers/distanceController');
 const getLightness = require('./src/controllers/lightnessController');
+const toggleLed= require('./src/controllers/ledController');
 const notFound = require('./src/controllers/notFoundController');
 const routes = {
     '/distance': {
@@ -8,6 +9,9 @@ const routes = {
     },
     '/lightness': {
         'GET': getLightness
+    },
+    '/led': {
+        'GET': toggleLed
     }
 };
 

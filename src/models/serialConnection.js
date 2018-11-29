@@ -1,6 +1,7 @@
 const orderBook = [];
 
 var port;
+var ledState = 0;
 
 async function initSerialConnection() {
     var SerialPort = require('serialport');
@@ -15,7 +16,7 @@ async function initSerialConnection() {
     });
     var buffer = '';
     port.on('data', function (chunk) {
-      
+
         buffer += chunk;
         if (buffer.length > 1000)
             buffer = '';
@@ -26,10 +27,9 @@ async function initSerialConnection() {
             buffer = '';
             try {
                 obj = JSON.parse(object);
-            } catch (e) {console.error(e); console.log(object) }
+            } catch (e) { console.error(e); console.log(object) }
             console.log('consegui', obj);
         }
-        console.log(buffer)
     });
     console.log("Initiated DataBase connection");
 }
@@ -41,9 +41,26 @@ var obj = {
 }
 getDistance = () => obj.distance;
 getLightness = () => obj.lightness;
+
+toggleLed = () => {
+    if (ledState)
+        ledState = 0;
+    else
+        ledState = 1;
+    console.log('writing ', ledState)
+    port.write(`${ledState}`, function (err) {
+        if (err) {
+            return console.log('Error on write: ', err.message)
+        }
+        console.log('message written', ledState)
+    })
+
+}
+
 module.exports = {
     orderBook,
     initSerialConnection,
     getDistance,
-    getLightness
+    getLightness,
+    toggleLed
 }
